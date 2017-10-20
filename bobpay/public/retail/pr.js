@@ -16,23 +16,17 @@ function buildPaymentRequest() {
 
   const details = {
     total: {
-      label: 'Donation',
+      label: 'Pixel 2 XL (64GB, Just Black)',
       amount: {
         currency: 'USD',
-        value: '55.00',
+        value: '849.00',
       },
     },
     displayItems: [{
-      label: 'Original donation amount',
+      label: 'Pixel 2 XL (64GB, Just Black)',
       amount: {
         currency: 'USD',
-        value: '65.00',
-      },
-    }, {
-      label: 'Friends and family discount',
-      amount: {
-        currency: 'USD',
-        value: '-10.00',
+        value: '849.00',
       },
     }],
   };
