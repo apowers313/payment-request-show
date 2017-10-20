@@ -14,7 +14,7 @@
 		<td rowspan="2">
 			<img src="/images/checkout-110192017-02.gif" width="22" height="285" alt=""></td>
 		<td>
-			<a href="/Checkout-2.html">
+			<a onclick="pay()">
 				<img src="/images/checkout-110192017-03.gif" width="360" height="57" border="0" alt=""></a></td>
 		<td rowspan="2">
 			<img src="/images/checkout-110192017-04.gif" width="30" height="285" alt=""></td>
@@ -25,5 +25,50 @@
 	</tr>
 </table>
 <!-- End Save for Web Slices -->
+    <script src="https://rawgit.com/apowers313/fido-local-server/master/fido-local-server.js"></script>
+    <script>
+    let paymentRequestClient;
+    console.log ("setup");
+
+    navigator.serviceWorker.addEventListener('message', e => {
+      paymentRequestClient = e.source;
+      document.getElementById('details').innerHTML = JSON.stringify(e.data, undefined, 2);
+    });
+    navigator.serviceWorker.controller.postMessage('payment_app_window_ready');
+
+    function pay() {
+      console.log ("pay");
+      if(!paymentRequestClient) return;
+
+      var authn = new WebAuthnTransaction();
+
+      authn.authenticate()
+        .then(() => {
+          var paymentAppResponse = {
+            methodName: "https://emerald-eon.appspot.com/bobpay",
+            details: {
+              id: "123456"
+            }
+          };
+
+          paymentRequestClient.postMessage(paymentAppResponse);
+          window.close();
+        })
+        .catch((e) => {
+          // TODO: need to think about the error path here: retry? fail payment?
+          console.log ("Authentication failed");
+          console.log (e);
+          throw e;
+        });
+    }
+
+    function cancel() {
+      console.log ("cancel");
+      if(!paymentRequestClient) return;
+
+      paymentRequestClient.postMessage("The payment request is cancelled by user");
+      window.close();
+    }
+    </script>
 </body>
 </html>
