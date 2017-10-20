@@ -1,6 +1,6 @@
 {
-  "name": "Pay with BobPay",
-  "short_name": "BobPay",
+  "name": "Pay with UPayNow",
+  "short_name": "UPayNow",
   "icons": [{
   	"src": "bobpay.png",
   	"sizes": "32x32",

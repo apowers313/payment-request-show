@@ -19,7 +19,7 @@ function buildPaymentRequest() {
       label: 'Pixel 2 XL (64GB, Just Black)',
       amount: {
         currency: 'USD',
-        value: '849.00',
+        value: '919.04',
       },
     },
     displayItems: [{
@@ -27,6 +27,11 @@ function buildPaymentRequest() {
       amount: {
         currency: 'USD',
         value: '849.00',
+      }, {
+      label: 'Estimated Tax',
+      amount: {
+        currency: 'USD',
+        value: '70.04',
       },
     }],
   };

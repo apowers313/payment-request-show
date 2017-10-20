@@ -55,7 +55,7 @@
 
     // Adds the BobPay default instrument.
     function addInstruments(registration) {
-      registration.paymentManager.userHint = "test@bobpay.xyz";
+      registration.paymentManager.userHint = "christiaan@upaynow.com";
       if (document.getElementById('alipay').checked) {
         return Promise.all([registration.paymentManager.instruments.set(
         "c8126178-3bba-4d09-8f00-0771deadbeef",
@@ -73,7 +73,7 @@
       return Promise.all([registration.paymentManager.instruments.set(
         "dc2de27a-ca5e-4fbd-883e-b6ded6c69d4f",
         {
-          name: "My Bob Pay Account",
+          name: "My UPayNow Account",
           icons: [{
             src:"/pay/bobpay.png",
             sizes:"32x32",
