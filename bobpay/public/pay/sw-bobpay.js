@@ -11,7 +11,7 @@ self.addEventListener('paymentrequest', function(e) {
   payment_request_resolver = new PromiseResolver();
   e.respondWith(payment_request_resolver.promise);
 
-  var url = "https://webauthn.org:8443/pay";
+  var url = "https://webauthn.org/pay";
   // HACK. Ideally e.instrumentKey would be set. crbug.com/752835.
   if (e.methodData[0].supportedMethods[0].indexOf('alipay') != -1)
     url += "/alipay.html";
