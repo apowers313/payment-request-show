@@ -27,7 +27,8 @@ function buildPaymentRequest() {
       amount: {
         currency: 'USD',
         value: '849.00',
-      }, {
+      }, 
+    }, {
       label: 'Estimated Tax',
       amount: {
         currency: 'USD',
